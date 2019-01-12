@@ -19,16 +19,17 @@ app.use(bodyparser.json())
 app.use(bodyparser.urlencoded({ extended: true }))
 app.use(cookieParser())
 
+
 app.use(session({ secret: 'hernameislola', saveUninitialized: false, resave: false, cookie: { maxAge: 1000 } }))
 app.use('*', cors())
 passport.serializeUser((user, done) => {
-  done(null, user.id) // ID is enough to store
+	done(null, user.id) // ID is enough to store
 })
 
 passport.deserializeUser((id, done) => {
-  User.findById(id).then((user) => {
-    done(null, user)
-  })
+	User.findById(id).then((user) => {
+		done(null, user)
+	})
 })
 
 app.use(passport.initialize())
@@ -40,10 +41,15 @@ app.use('/auth', require('./routes/auth'))
 app.use('/profile', require('./routes/profile-route'))
 
 app.get('/auth/login', (req, res) => {
-  res.render({ username: req.user.username })
+	res.render({ username: req.user.username })
 }
 )
+// Handle production and SPA
+if(process.env.NODE_ENV === 'production'){
+  app.use(express.static(__dirname + '/public/'));
+  app.get(/.*/, (req,res) => res.sendFile(__dirname + '/public/index.html'))
+}
 
 app.listen(port, () => {
-  console.log('Server is running on:', port)
+	console.log('Server is running on:', port)
 })
