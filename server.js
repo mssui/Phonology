@@ -11,7 +11,7 @@ const User = require('./models/user-model')
 
 mongoose.Promise = global.Promise
 const port = process.env.PORT || 3030
-mongoose.connect('mongodb://localhost/aslitest')
+mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost/aslitest')
 
 var app = express()
 
