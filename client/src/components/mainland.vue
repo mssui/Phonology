@@ -130,7 +130,7 @@ export default {
         // Check this slug, if it is already in database, add the read to its directory
       
 
-        const slugRes = await this.$http.get(
+        const slugRes = await axios.get(
           `slugs/${this.slug}`
         );
         const slugId = slugRes.data && slugRes.data[0] && slugRes.data[0]._id;
@@ -138,7 +138,7 @@ export default {
         // If Slug is true, save the comment to it's ID
         if (slugId) {
           const postToSlug = await axios.post(
-            `http://localhost:3030/posts/${slugId}/add`,
+            `posts/${slugId}/add`,
             {
               text: this.read,
               author: { username: this.user }
@@ -149,14 +149,14 @@ export default {
           // If Slug is false, create a new comment with new post ID
         }
         axios
-          .post("http://localhost:3030/addpost", {
+          .post("addpost", {
             title: this.entry,
             slug: this.slug
           })
           .then(response => {
             console.log(response.data._id);
             axios
-              .post(`http://localhost:3030/posts/${response.data._id}/add`, {
+              .post(`posts/${response.data._id}/add`, {
                 text: this.read,
                 title: this.entry,
                 author: { username: this.user }
@@ -183,7 +183,7 @@ export default {
 
     // Get Post Details
     
-    this.$http.get('posts')
+    axios.get('posts')
       .then(response => {
         this.mains = JSON.stringify(response.data);
         this.mains = JSON.parse(this.mains);

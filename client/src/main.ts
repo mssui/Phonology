@@ -10,12 +10,6 @@ Vue.use(Buefy);
 Vue.config.productionTip = false;
 
 
-const base = axios.create({
-  baseURL: 'https://cryptic-tor-26183.herokuapp.com/'
-})
-
-Vue.prototype.$http = base
-
 new Vue({
   router,
   store,
