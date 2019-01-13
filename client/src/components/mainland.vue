@@ -128,6 +128,8 @@ export default {
           }).toString(); // Create a slug
         }
         // Check this slug, if it is already in database, add the read to its directory
+      
+
         const slugRes = await axios.get(
           `http://localhost:3030/slugs/${this.slug}`
         );
@@ -180,8 +182,8 @@ export default {
     }
 
     // Get Post Details
-    axios
-      .get("http://localhost:3030/posts")
+    
+    this.$http.get('posts')
       .then(response => {
         this.mains = JSON.stringify(response.data);
         this.mains = JSON.parse(this.mains);
