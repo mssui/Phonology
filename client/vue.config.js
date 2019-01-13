@@ -1,15 +1,11 @@
 const path = require('path');
-// const axios = require('axios')
-// module.exports = axios.create({
-//   baseURL: 'http://localhost:3030'
-// })
+
 module.exports = {
     // devServer :{
-    //     proxy : {
-    //         '/' : {
-    //             target : 'http://localhost:3030'
-    //         }
-    //     }
+    //     proxy: { // proxy URLs to backend development server
+    //         '/api': 'http://localhost:3030'
+    //       }
     // },
+  
 outputDir : path.resolve(__dirname, '../public')
 }

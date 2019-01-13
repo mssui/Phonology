@@ -9,7 +9,7 @@
     "esModuleInterop": true,
     "allowSyntheticDefaultImports": true,
     "sourceMap": true,
-    "baseUrl": ".",
+    "baseUrl": "https://cryptic-tor-26183.herokuapp.com/",
     "types": [
       "webpack-env",
       "mocha",

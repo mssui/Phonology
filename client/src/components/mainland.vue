@@ -94,6 +94,7 @@ import slugify from "slugify";
 import navbar from "./navbar.vue";
 import animation from "./animation.vue";
 
+
 export default {
   name: "Mainland",
   data() {
@@ -128,8 +129,6 @@ export default {
           }).toString(); // Create a slug
         }
         // Check this slug, if it is already in database, add the read to its directory
-      
-
         const slugRes = await axios.get(
           `slugs/${this.slug}`
         );
@@ -192,7 +191,6 @@ export default {
       //     User picturı çekip return eden fonksiyonlu bir route hazırla buraya ver
       //   })
       // })
-      
 
         // const container = document.getElementById("contain-loop");
         for (let i = 0; i < this.mains.length; i++) {
@@ -218,7 +216,6 @@ export default {
 input[type="text"] {
   height: 4em !important;
 }
-
 .stable-text {
   display: inline-block;
   font-size: 18px;
@@ -232,7 +229,6 @@ input[type="text"] {
 .s-lg {
   margin: 0.2em;
 }
-
 h3 {
   margin: 40px 0 0;
 }
