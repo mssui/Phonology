@@ -130,8 +130,8 @@ export default {
         // Check this slug, if it is already in database, add the read to its directory
       
 
-        const slugRes = await axios.get(
-          `http://localhost:3030/slugs/${this.slug}`
+        const slugRes = await this.$http.get(
+          `slugs/${this.slug}`
         );
         const slugId = slugRes.data && slugRes.data[0] && slugRes.data[0]._id;
 
