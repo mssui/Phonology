@@ -21,7 +21,7 @@
             <div class="field">
               <label class="label">Write a Password</label>
             <div class="control has-icons-left">
-                <input class="input" type="password" id="password" v-model.trim="register.password">
+                <input class="input" type="password" id="password sign" v-model.trim="register.password">
                 <span class="icon is-small is-left">
                 <i class="fas fa-lock"></i>
                 </span>
@@ -48,7 +48,7 @@
 
 import axios from "axios";
 export default {
-  name: "register",
+  name: "signupComponent",
   data() {
     return {
       register: {

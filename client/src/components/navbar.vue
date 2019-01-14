@@ -1,20 +1,19 @@
 <template>
-  <nav
-    class="navbar"
-    role="navigation"
-    aria-label="main navigation"
-  >
+<div id="app">
+   <!--
+ESKI OLAN BASLAR    -->
+<nav class="navbar" role="navigation" aria-label="main navigation">
     <div class="navbar-brand">
       <a class="navbar-item" href="#">
-        SDN
-      <!-- <img src="" width="112" height="50"> -->
+        <strong>SDN</strong> 
+        <!-- <img src="../assets/logo.png" alt="Logo" width="200" height="70"> -->
       </a>
-      <a
-        role="button"
+      <a role="button"
         class="navbar-burger burger"
         aria-label="menu"
         aria-expanded="false"
         data-target="navbarBasicExample"
+         @click="showNav = !showNav" :class="{ 'is-active': showNav }"
       >
         <span aria-hidden="true" />
         <span aria-hidden="true" />
@@ -22,30 +21,30 @@
       </a>
     </div>
 
-    <div id="navbarBasicExample" class="navbar-menu">
+    <div id="navbarBasicExample" class="navbar-menu" :class="{ 'is-active': showNav }">
       <div class="navbar-start">
         <a class="navbar-item">
           <router-link :to="{name: 'mainland'}">
-            Home
+            Anasayfa
           </router-link>
 
         </a>
 
         <a class="navbar-item">
-          Documentation
+          En çok oylananlar
         </a>
 
         <div class="navbar-item has-dropdown is-hoverable">
           <a class="navbar-link">
-            More
+            İletişim
           </a>
 
           <div class="navbar-dropdown">
             <a class="navbar-item">
-              About
+              Nedir?
             </a>
             <a class="navbar-item">
-              Contact
+              İletişim
             </a>
 
           </div>
@@ -58,183 +57,92 @@
             v-if="isloggedin"
             class="buttons"
           >
-            <a
-              class="button is-primary"
-              @click="$router.push('profile/'+ isloggedin)"
-            >
+            <a class="button is-primary" @click="$router.push('profile/'+ isloggedin)">
               Dashboard
             </a>
-            <a
-              class="button is-warning"
-              @click="userLogout"
-            >
+            <a class="button is-warning" @click="userLogout">
               Logout
             </a>
-            <p v-if="statusText">
-              {{ statusText }}
-            </p>
+            
           </div>
           <div
             v-else
             class="buttons"
           >
-            <a class="button is-primary">
+          <p v-if="statusText">
+              {{ statusText }}
+            </p>
+            <a class="button is-primary" @click="signup">
               <strong>Sign up</strong>
             </a>
-            <a
-              class="button is-light is-pulled-right"
-              @click="login"
-            >
+            
+            <!-- SIGNUP MODAL Starts -->
+            <div class="modal signup">
+              <div class="modal-background has-background-lightgray" />
+              <div class="modal-content fcolor">
+                <!-- Signup Form Starts -->
+                <div class="block loginform">
+                  <signupComponent />
+
+                </div>
+              </div>
+               <button class="modal-close is-large" aria-label="close" @click="closesignup"/>
+
+             </div>
+            <!-- LOGIN MODAL Starts -->
+          <a class="button is-light is-pulled-right" @click="login">
               Log in
-            </a>
-            <div class="modal">
+          </a>
+
+            <div class="modal login">
               <div class="modal-background has-background-lightgray" />
               <div class="modal-content fcolor">
                 <!-- Login Form Starts -->
                 <div class="block loginform">
-                  <p class="title">
-                    LOGIN
-                  </p>
-                  <p class="subtitle">
-                    LOGIN
-                  </p>
-                  If you are already a member please sign in OR Create a new account
+                  <loginComponent />
                   <!-- Login -->
-                  <div class="field">
-                    <p class="control has-icons-left has-icons-right">
-                      <input
-                        class="input"
-                        type="email"
-                        placeholder="Email"
-                      >
-                      <span class="icon is-small is-left">
-                        <i class="fas fa-envelope" />
-                      </span>
-                      <span class="icon is-small is-right">
-                        <i class="fas fa-check" />
-                      </span>
-                    </p>
-                  </div>
-                  <div class="field">
-                    <p class="control has-icons-left">
-                      <input
-                        class="input"
-                        type="password"
-                        placeholder="Password"
-                      >
-                      <span class="icon is-small is-left">
-                        <i class="fas fa-lock" />
-                      </span>
-                    </p>
-                  </div>
-                  <div class="field">
-                    <p class="control is-pulled-right">
-                      <button class="button is-success ">
-                        Login
-                      </button>
-                    </p>
-                  </div>
-                  <div class="field" />
-                  <!-- Sign UP -->
-                  <p class="title">
-                    SIGNUP
-                  </p>
-                  <div class="field ">
-                    <div class="control">
-                      <input
-                        class="input"
-                        type="text"
-                        placeholder="Your Name"
-                      >
-                    </div>
-                  </div>
-
-                  <div class="field">
-
-                    <div class="control has-icons-left has-icons-right">
-                      <input
-                        class="input is-success"
-                        type="text"
-                        placeholder="Pick a Username"
-                      >
-                      <span class="icon is-small is-left has-text-info">
-                        <i class="fas fa-user" />
-                      </span>
-                      <!-- <span class="icon is-small is-right">
-            <i class="fas fa-check"></i>
-            </span> -->
-                    </div>
-                    <!-- <p class="help is-success">This username is available</p> -->
-                  </div>
-
-                  <div class="field">
-
-                    <div class="control has-icons-left has-icons-right">
-                      <input
-                        class="input is-danger"
-                        type="email"
-                        placeholder="Your E-mail"
-                      >
-                      <span class="icon is-small is-left has-text-info">
-                        <i class="fas fa-envelope" />
-                      </span>
-                      <span class="icon is-small is-right">
-                        <i class="fas fa-exclamation-triangle" />
-                      </span>
-                    </div>
-                    <!-- <p class="help is-danger">This email is invalid</p> -->
-                  </div>
-                  <div class="field">
-                    <p class="control has-icons-left has-text-info">
-                      <input
-                        class="input"
-                        type="password"
-                        placeholder="Password"
-                      >
-                      <span class="icon is-small is-left">
-                        <i class="fas fa-lock" />
-                      </span>
-                    </p>
-                  </div>
-                  <div class="field">
-                    <p class="control is-pulled-right">
-                      <button class="button is-success ">
-                        SignUp
-                      </button>
-                    </p>
-                  </div>
                 </div>
               </div>
-              <button
-                class="modal-close is-large"
-                aria-label="close"
-                @click="closemodel"
-              />
-            </div>
-          </div>
+              <button class="modal-close is-large" aria-label="close" @click="closelogin"/>  
+            </div>        
         </div>
       </div>
     </div>
+    </div>
   </nav>
+  </div>
 </template>
 
 <script>
 import axios from "axios";
+import signupComponent from "./signupComponent.vue";
+import loginComponent from "./loginComponent.vue";
 
 export default {
   name: "Navbar",
   data() {
     return {
+      showNav: false,
       isloggedin: localStorage.getItem("user"),
       statusText: null
     };
   },
+  components: {
+    signupComponent,
+    loginComponent
+  },
   methods: {
-    login() {
-      document.querySelector(".modal").classList.add("is-active");
+    signup() {
+      document.querySelector(".signup").classList.add("is-active");
     },
-    closemodel() {
-      document.querySelector(".modal").classList.remove("is-active");
+    login() {
+      document.querySelector(".login").classList.add("is-active");
+    },
+    closelogin() {
+      document.querySelector(".login").classList.remove("is-active");
+    },
+    closesignup() {
+      document.querySelector(".signup").classList.remove("is-active");
     },
     userLogout() {
       const self = this;
@@ -257,6 +165,8 @@ export default {
 </script>
 
 <style>
+.navbar-item-img{max-height: 70px;}
+.navbar{height: 70px;}
 .loginform {
   margin: 2em;
 }
