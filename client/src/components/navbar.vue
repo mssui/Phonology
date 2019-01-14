@@ -63,20 +63,18 @@ ESKI OLAN BASLAR    -->
             <a class="button is-warning" @click="userLogout">
               Logout
             </a>
-            
+            <p v-if="statusText">
+              {{ statusText }}
+            </p>
           </div>
           <div
             v-else
             class="buttons"
           >
-          <p v-if="statusText">
-              {{ statusText }}
-            </p>
             <a class="button is-primary" @click="signup">
               <strong>Sign up</strong>
             </a>
-            
-            <!-- SIGNUP MODAL Starts -->
+              <!-- SIGNUP MODAL Starts -->
             <div class="modal signup">
               <div class="modal-background has-background-lightgray" />
               <div class="modal-content fcolor">
@@ -153,6 +151,7 @@ export default {
           console.log(response.data.message);
           self.statusText = response.data.message; // Show logged out message to user
           localStorage.removeItem("user");
+          self.isloggedin = null
           self.$router.push("/");
         })
         .catch(error => {

@@ -3,6 +3,7 @@ module.exports = {
         "browser": true,
         "es6": true
     },
+    "format_on_save": true,
     "extends": "eslint:recommended",
     "parserOptions": {
         "ecmaFeatures": {
