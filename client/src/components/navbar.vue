@@ -4,8 +4,10 @@
 ESKI OLAN BASLAR    -->
 <nav class="navbar" role="navigation" aria-label="main navigation">
     <div class="navbar-brand">
-      <a class="navbar-item" href="#">
-        <strong>SDN</strong> 
+      <a class="navbar-item">
+        <router-link :to="{name: 'mainland'}">
+             <strong>SDN</strong> 
+          </router-link>
         <!-- <img src="../assets/logo.png" alt="Logo" width="200" height="70"> -->
       </a>
       <a role="button"
@@ -31,20 +33,29 @@ ESKI OLAN BASLAR    -->
         </a>
 
         <a class="navbar-item">
-          En çok oylananlar
+           <router-link :to="{name: 'likedposts'}">
+            En çok oylananlar
+          </router-link>
+          
         </a>
 
         <div class="navbar-item has-dropdown is-hoverable">
           <a class="navbar-link">
+             <router-link :to="{name: 'contact'}">
             İletişim
+          </router-link>
           </a>
 
           <div class="navbar-dropdown">
             <a class="navbar-item">
-              Nedir?
+               <router-link :to="{name: 'about'}">
+            Nedir?
+          </router-link>
             </a>
             <a class="navbar-item">
-              İletişim
+               <router-link :to="{name: 'contact'}">
+            İletişim
+          </router-link>
             </a>
 
           </div>

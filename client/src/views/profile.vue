@@ -54,18 +54,17 @@
       </div>
     </div>
   </div>
-  <div class="column">Auto</div>
-  <div class="column">Auto</div>
+  <div class="column">User actions edit/delete</div>
 </div>
 
-  
-    
+  <footerComponent />
 </div>
 </template>
 
 <script>
 import navbar from "@/components/navbar";
 import axios from "axios";
+import footerComponent from "@/components/footerComponent.vue"
 export default {
   name: "profile",
   data() {
@@ -93,7 +92,8 @@ export default {
         
   },
   components: {
-    navbar
+    navbar,
+    footerComponent
   },
   mounted() {
     if (localStorage.getItem("user") != null) {

@@ -74,18 +74,11 @@
              </nav></div>
           </article>
           </div>
+          <footerComponent />
       </div>
     </div>
     <!-- Footer Banner -->
-    <footer class="footer">
-      <div class="content has-text-centered">
-        <p>
-          <strong>SND</strong> by Aslı Arı. The source code is published<a href="https://github.com/mssui">
-            on GitHub
-          </a>
-        </p>
-      </div>
-    </footer>
+    
   </div>
 </template>
 <script>
@@ -93,6 +86,8 @@ import axios from "axios";
 import slugify from "slugify";
 import navbar from "./navbar.vue";
 import animation from "./animation.vue";
+import footerComponent from "@/components/footerComponent.vue"
+
 
 
 export default {
@@ -115,7 +110,8 @@ export default {
   },
   components: {
     navbar,
-    animation
+    animation,
+    footerComponent
   },
   methods: {
     async postSend(event) {

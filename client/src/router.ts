@@ -29,6 +29,12 @@ export default new Router({
         import(/* webpackChunkName: "about" */ "./views/login.vue")
     },
     {
+      path: "contact",
+      name: "contact",
+      component: () =>
+        import(/* webpackChunkName: "about" */ "./views/contact.vue")
+    },
+    {
       path: "/auth/register",
       name: "register",
       component: () =>
@@ -39,6 +45,12 @@ export default new Router({
       name: "profile",
       component: () =>
         import(/* webpackChunkName: "about" */ "./views/profile.vue")
+    },
+    {
+      path: "/likedposts",
+      name: "likedposts",
+      component: () =>
+        import(/* webpackChunkName: "about" */ "./views/likedposts.vue")
     }
   ]
 });
