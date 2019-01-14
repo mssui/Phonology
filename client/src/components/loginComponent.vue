@@ -67,11 +67,12 @@
 
 <script>
 
-import axios from 'axios'
+import axios from "axios";
 
 export default {
-  name: 'loginComponent',
-  components:{ 
+  name: "loginComponent",
+  components: {
+    
   },
   data() {
     return {
@@ -80,9 +81,9 @@ export default {
         password: null
       },
       errors: []
-    }
+    };
   },
-  methods:{
+  methods: {
     userSubmit() {
       const self = this;
       axios

@@ -89,10 +89,11 @@
   </div>
 </template>
 <script>
-import axios from "axios"
-import slugify from "slugify"
-import navbar from "./navbar.vue"
-import animation from "./animation.vue"
+import axios from "axios";
+import slugify from "slugify";
+import navbar from "./navbar.vue";
+import animation from "./animation.vue";
+
 
 export default {
   name: "Mainland",
@@ -110,7 +111,7 @@ export default {
       slug: null,
       feedback: null,
       user: null
-    }
+    };
   },
   components: {
     navbar,
@@ -118,7 +119,7 @@ export default {
   },
   methods: {
     async postSend(event) {
-      event.preventDefault()
+      event.preventDefault();
       try {
         if (this.entry && this.read) {
           this.slug = slugify(this.entry, {
@@ -128,7 +129,9 @@ export default {
           }).toString(); // Create a slug
         }
         // Check this slug, if it is already in database, add the read to its directory
-        const slugRes = await axios.get(`slugs/${this.slug}`)
+        const slugRes = await axios.get(
+          `slugs/${this.slug}`
+        );
         const slugId = slugRes.data && slugRes.data[0] && slugRes.data[0]._id;
 
         // If Slug is true, save the comment to it's ID
