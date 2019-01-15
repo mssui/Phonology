@@ -42,8 +42,7 @@ app.use('/profile', require('./routes/profile-route'))
 
 app.get('/auth/login', (req, res) => {
 	res.render({ username: req.user.username })
-}
-)
+})
 
 // Handle production and SPA
 if(process.env.NODE_ENV === 'production'){

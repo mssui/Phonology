@@ -87,7 +87,7 @@ export default {
     userSubmit() {
       const self = this;
       axios
-        .post("http://localhost:3030/auth/login/", this.login)
+        .post("auth/login/", this.login)
         .then(response => {
           if (response.status == "200") {
             const strdata = JSON.parse(response.config.data);

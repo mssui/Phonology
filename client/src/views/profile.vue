@@ -98,7 +98,7 @@ export default {
   mounted() {
     if (localStorage.getItem("user") != null) {
       this.user = localStorage.getItem("user");
-      axios.get(`http://localhost:3030/infos/${this.user}`).then(response => {
+      axios.get(`infos/${this.user}`).then(response => {
         this.bio = response.data[0].bio;
         this.gender = response.data[0].gender;
         this.userpic = response.data[0].image;
@@ -107,7 +107,7 @@ export default {
       this.$router.push("/auth/login");
     }
     axios
-      .get(`http://localhost:3030/posts/${this.user}`)
+      .get(`posts/${this.user}`)
       .then(response => {
         this.mains = JSON.stringify(response.data);
         this.mains = JSON.parse(this.mains);

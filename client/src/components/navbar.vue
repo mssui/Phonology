@@ -157,7 +157,7 @@ export default {
       const self = this;
       //  if (localStorage.getItem('user') != null){
       axios
-        .get("http://localhost:3030/auth/logout")
+        .get("auth/logout")
         .then(response => {
           console.log(response.data.message);
           self.statusText = response.data.message; // Show logged out message to user

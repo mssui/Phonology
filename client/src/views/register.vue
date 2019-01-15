@@ -63,7 +63,7 @@ export default {
     userSubmit: function() {
       let self = this;
       axios
-        .post(`http://localhost:3030/auth/register/`, this.register)
+        .post(`auth/register/`, this.register)
         .then(response => {
           if (response.status == "200") {
             let strdata = JSON.parse(response.config.data);
