@@ -123,54 +123,54 @@ ESKI OLAN BASLAR    -->
 </template>
 
 <script>
-import axios from "axios";
-import signupComponent from "./signupComponent.vue";
-import loginComponent from "./loginComponent.vue";
+import axios from 'axios';
+import signupComponent from './signupComponent.vue';
+import loginComponent from './loginComponent.vue';
 
 export default {
-  name: "Navbar",
-  data() {
-    return {
-      showNav: false,
-      isloggedin: localStorage.getItem("user"),
-      statusText: null
-    };
-  },
-  components: {
-    signupComponent,
-    loginComponent
-  },
-  methods: {
-    signup() {
-      document.querySelector(".signup").classList.add("is-active");
-    },
-    login() {
-      document.querySelector(".login").classList.add("is-active");
-    },
-    closelogin() {
-      document.querySelector(".login").classList.remove("is-active");
-    },
-    closesignup() {
-      document.querySelector(".signup").classList.remove("is-active");
-    },
-    userLogout() {
-      const self = this;
-      //  if (localStorage.getItem('user') != null){
-      axios
-        .get("auth/logout")
-        .then(response => {
-          console.log(response.data.message);
-          self.statusText = response.data.message; // Show logged out message to user
-          localStorage.removeItem("user");
-          self.isloggedin = null
-          self.$router.push("/");
-        })
-        .catch(error => {
-          console.log(error);
-        });
-      // }
-    }
-  }
+	name: 'Navbar',
+	data() {
+		return {
+			showNav: false,
+			isloggedin: localStorage.getItem('user'),
+			statusText: null
+		};
+	},
+	components: {
+		signupComponent,
+		loginComponent
+	},
+	methods: {
+		signup() {
+			document.querySelector('.signup').classList.add('is-active');
+		},
+		login() {
+			document.querySelector('.login').classList.add('is-active');
+		},
+		closelogin() {
+			document.querySelector('.login').classList.remove('is-active');
+		},
+		closesignup() {
+			document.querySelector('.signup').classList.remove('is-active');
+		},
+		userLogout() {
+			const self = this;
+			//  if (localStorage.getItem('user') != null){
+			axios
+				.get('auth/logout')
+				.then(response => {
+					console.log(response.data.message);
+					self.statusText = response.data.message; // Show logged out message to user
+					localStorage.removeItem('user');
+					self.isloggedin = null;
+					self.$router.push('/');
+				})
+				.catch(error => {
+					console.log(error);
+				});
+			// }
+		}
+	}
 };
 </script>
 

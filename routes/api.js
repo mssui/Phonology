@@ -6,7 +6,6 @@ const User = require('../models/user-model')
 
 // get a list of posts from the db
 
-
 router.get('/posts', async (req, res, next) => {
   const postMap = await Posts.findAll()
   let postData = []
@@ -24,6 +23,7 @@ router.get('/posts', async (req, res, next) => {
   // const other = postMap.map((data)=>{return data.title;});
   // res.send(other);
 })
+
 
 // Slug Search Route, Get ID if it is already in DB REMOVE This Route
 
@@ -84,9 +84,6 @@ router.get('/comments', async (req, res, next) => {
     })
   }
   res.send(postData)
-  // Or i can use map method like below commented out.
-  // const other = postMap.map((data)=>{return data.title;});
-  // res.send(other);
 })
 
 // add a new comment to the db
@@ -110,6 +107,7 @@ router.delete('/comments/:id', function (req, res, next) {
     res.send(post)
   }).catch(next)
 })
+
 
 // USER ROUTES USER IS NOT DEFINED YET
 router.get('/allusers', async (req, res, next) => {

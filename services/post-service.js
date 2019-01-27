@@ -1,7 +1,8 @@
 const postModel = require('../models/posts-model');
 
-  async function findAll() { 
-    return postModel.find().populate('comments');
+async function findAll() { 
+    return postModel.find()
+    // .populate('comments');
 }
 
 async function add(Posts) {
